@@ -1,0 +1,7 @@
+/**index.wxss**/
+.usermotto {
+  margin-top: 200px;
+  font-size:larger;
+  text-align: center;
+  font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+}

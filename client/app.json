@@ -1,0 +1,40 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/toWork/toWork",
+    "pages/networkTest/networkTest",
+    "pages/addCgi/addCgi"
+  ],
+  "window":{
+    "backgroundColor":"#F6F6F6",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "THUlibTest",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "borderStyle": "#000",
+    "selectedColor": "#ff9999",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/mainpage_unselected.png",
+        "selectedIconPath": "image/mainpage_selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/toWork/toWork",
+        "iconPath": "image/toWork_unselected.png",
+        "selectedIconPath": "image/toWork_selected.png",
+        "text": "工作"
+      },
+      {
+        "pagePath": "pages/networkTest/networkTest",
+        "iconPath": "image/network_unselected.png",
+        "selectedIconPath": "image/network_selected.png",       
+        "text": "网络"
+      }
+    ]
+  }
+}
