@@ -1,0 +1,8 @@
+<!--bulletinDetail.wxml-->
+<view class='sumView'>
+  <view class="bulletinTitle">{{title}}</view>
+
+  <scroll-view class="scrollView" enable-back-to-top>
+    <view class="bulletinDetail">{{detail}}</view>
+  </scroll-view>
+</view>

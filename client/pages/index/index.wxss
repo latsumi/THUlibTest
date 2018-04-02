@@ -1,7 +1,63 @@
 /**index.wxss**/
-.usermotto {
-  margin-top: 200px;
-  font-size:larger;
-  text-align: center;
-  font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+.swiper {
+  margin: 0 auto;
+  width: 750rpx;
+  height: 450rpx;
 }
+.image {
+  width: 100%;
+}
+.bulletinTitle {
+  margin-top: 0;
+  text-align: center;
+  font-size: 24px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+.list {
+  border-color: #8B008B;
+  border-width: 10px;
+  border: outset; 
+  background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522321426663&di=bc5c71dbe8ff0dee32060af4f9e054f9&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D3884556198%2C3015661182%26fm%3D214%26gp%3D0.jpg");
+}
+
+.bulletin {
+  margin: 10px;
+  font-size: smaller;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+.icon {
+  width: 12px;
+  height: 12px;
+}
+.listItem {
+  border: solid 1px;
+  border-radius: 5px;
+  border-color: #E6E6FA;
+  margin: 8px 8px;
+  font-size: larger;
+  align-items: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.button {
+  margin-top: 20rpx;
+  width: 170rpx;
+  height: 120rpx;
+  font-size: 25rpx;
+  background-color: #B28FCE;
+}
+
+.showButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 750rpx;
+  height: 200rpx;
+  /**background-image: url("https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=b1840dc0c4bf6c81e33a24badd57da50/dbb44aed2e738bd49e1a5b99a98b87d6277ff95b.jpg");**/
+  background-color: #FCFAF2;
+}
+

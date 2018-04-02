@@ -3,13 +3,14 @@
     "pages/index/index",
     "pages/toWork/toWork",
     "pages/networkTest/networkTest",
-    "pages/addCgi/addCgi"
+    "pages/addCgi/addCgi",
+    "pages/info/bulletinDetail"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "THUlibTest",
+    "navigationBarTitleText": "THUlib_MiniPro",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
