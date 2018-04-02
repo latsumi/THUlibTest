@@ -1,1 +1,3 @@
 <!--toWork.wxml-->
+<view class="temp"><navigator url="addBull">新建公告</navigator></view>
+<view class="temp"><navigator url="bullList">编辑公告</navigator></view>

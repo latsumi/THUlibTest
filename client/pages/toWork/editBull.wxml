@@ -1,0 +1,19 @@
+<!--pages/toWork/editBull.wxml-->
+
+<form bindsubmit="save">
+<textarea class="hide" name="noteID" value="{{noteID}}" auto-height placeholder="输入公告内容" maxlength="-1"/>
+<label class="label">标题</label>
+<view class="log-list">
+<input name="title" type="text" value="{{title}}" placeholder="标题"/>
+</view>
+<label class="label"></label>
+<view class="log-list">
+<textarea name="context" value="{{detail}}" auto-height placeholder="输入公告内容" maxlength="-1"/>
+
+</view>
+<view class="submit"><button form-type="submit">保存</button></view>
+</form>
+<form bindsubmit="deleteNote">
+<textarea class="hide" name="noteID" value="{{noteID}}" auto-height placeholder="输入公告内容" maxlength="-1"/>
+<view class="submit" ><button type="warn" form-type="submit">删除</button></view>
+</form>

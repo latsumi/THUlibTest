@@ -1,0 +1,5 @@
+<!--pages/toWork/bullList.wxml-->
+
+<scroll-view scroll-y="true" wx:for="{{listData}}" wx:for-item="itemName" wx:key="">
+  <view class="list" bindtap='bindViewTap' data-index='{{index}}'>{{itemName.title}}</view>
+</scroll-view>

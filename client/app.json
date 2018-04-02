@@ -1,17 +1,20 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/toWork/toWork",
     "pages/networkTest/networkTest",
     "pages/addCgi/addCgi",
-    "pages/info/bulletinDetail"
+    "pages/info/bulletinDetail",
+    "pages/toWork/addBull",
+    "pages/toWork/editBull",
+    "pages/toWork/bullList"
   ],
-  "window":{
-    "backgroundColor":"#F6F6F6",
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "THUlib_MiniPro",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#000000",
@@ -33,7 +36,7 @@
       {
         "pagePath": "pages/networkTest/networkTest",
         "iconPath": "image/network_unselected.png",
-        "selectedIconPath": "image/network_selected.png",       
+        "selectedIconPath": "image/network_selected.png",
         "text": "网络"
       }
     ]

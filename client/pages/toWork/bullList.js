@@ -1,14 +1,10 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
+// pages/toWork/bullList.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    imgUrls:[
-      "../../image/home_lib01.jpg",
-      "../../image/home_lib02.jpg",
-      "../../image/home_lib03.jpg",
-    ],
     listData:[
       {
         title:"讲座：中外文电子图书数据库检索与利用（3月29日周四19:00）",
@@ -27,44 +23,70 @@ Page({
         detail: "虽然图书馆反复提醒广大校内用户要合理使用图书馆订购的电子资源，以维护广大校内用户的合法权益及清华大学的良好声誉，但仍有个别用户我行我素。2018年3月9日，生命科学学院教师谢某使用Endnote软件短时间内自动下载多篇论文违规访问Annual Reviews 数据库。该行为致使图书馆受到出版商的警告，并冻结了学校该IP对Annual Reviews数据库的访问权限。 他的行为影响了许多师生正常使用该电子资源，给图书馆今后电子资源的建设和发展造成困难。经图书馆领导教育后，他已认识到问题的严重后果，向图书馆反馈了说明。 为严肃纪律，教育本人，经清华大学图书馆馆务会议决定，对该教师的的违规行为从3月15日起在网上公布、停止借书权限半年。  近几年，校图书馆为了更好地服务于学校建设世界一流大学的战略目标，出巨资购买了大量的电子资源，较好地保证了学校教学、科研和学科建设对信息资源的需求，受到广大师生的欢迎。外国电子资源出版公司十分重视对知识产权的保护，而且都有严格的监控措施和技术手段。作为世界知名大学的清华大学师生，应该有相应的素养和意识。但遗憾的是，经常有个别人为了一己私利，不顾后果，采取不正当的方法和手段使用电子资源。其结果损害了广大师生的利益，也败坏了学校的声誉。",
       }, 
     ],
-
-    userInfo: {},
-    hasUserInfo: false,
-
-    menu:[
-      {
-        menuImage: "../../image/contacts_socialScience.png",
-        descs: "通讯录(社科)",
-      },
-      {
-        menuImage: "../../image/contacts_science&tech.png",
-        descs: "通讯录(科技)",
-      }, 
-      {
-        menuImage: "../../image/dutyForm_socialScience.png",
-        descs: "排班表(社科)",
-      }, 
-      {
-        menuImage: "../../image/dutyForm_science&tech.png",
-        descs: "排班表(科技)",
-      },
-    ]
   },
 
-  onLoad: function () {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (res) {
+    
+  },
 
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
   },
-  bindImageTap: function() {
-    wx.navigateTo({
-      url: '../info/bulletinDetail',
-    })
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+  
   },
-  bindBullTap: function(event) {
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  },
+
+  bindViewTap: function (event) {
     console.log(event)
     var index = event.target.dataset.index
     var item = this.data.listData[index]
     wx.navigateTo({
-      url: '../info/bulletinDetail?title=' + item.title + '&detail=' + item.detail,
+      url: 'editBull?title=' + item.title + '&detail=' + item.detail,
     })
   }
 })

@@ -8,14 +8,19 @@
   </block>
 </swiper>
 
-
+<view class="gap-1"></view>
+<view class="showMenu">
+  <view class="menuList" wx:for="{{menu}}" wx:key="">
+    <image class="menuImg" src="{{item.menuImage}}"></image>
+    <view class="menuDesc">{{item.descs}}</view>
+  </view>
+</view>
+<view class="gap-1"></view>
 
 <view class="list" style="flex-direction:column">
-  <view class="bulletinTitle">
-    <text>公告栏</text>
-  </view>
+  <view class="bulletinTitle">公告栏</view>
   <block wx:for="{{listData}}" wx:key="*this" wx:if="{{index<4}}">
-    <view style="background:#E6E6FA" class="listItem">
+    <view class="listItem">
       <image class="icon" src="../../image/star.png" mode='aspectFill'>
       </image>
       <text  class="bulletin" bindtap='bindBullTap' data-index='{{index}}'>{{item.title}}</text>
@@ -24,9 +29,4 @@
 </view>
 
 
-<view class="showButton">
-  <button class="button">通讯录（社科）</button>
-  <button class="button">通讯录（科技）</button>
-  <button class="button">排班表（社科）</button>
-  <button class="button">排班表（科技）</button>
-</view>
+
