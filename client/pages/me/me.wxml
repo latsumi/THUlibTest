@@ -1,0 +1,18 @@
+<!--pages/me/me.wxml-->
+
+<view class="userinfo" bindtap="login">
+  <image class="userinfo-avatar" src="{{logged ? userInfo.avatarUrl : '../../image/user-unlogin.png'}}" background-size="cover"></image>
+  <view>
+    <text class="userinfo-nickname">{{logged ? userInfo.nickName : '点击登录'}}</text>
+    <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+  </view>
+</view>
+
+<view class="gap-1"></view>
+<view class="showMenu">
+  <view class="menuList" wx:for="{{menu}}" wx:key="">
+    <image class="menuImg" bindtap="bindMenuTap" src="{{item.menuImage}}" data-index='{{index}}'></image>
+    <view class="menuDesc">{{item.descs}}</view>
+  </view>
+</view>
+<view class="gap-1"></view>

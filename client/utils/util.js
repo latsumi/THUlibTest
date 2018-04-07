@@ -39,4 +39,19 @@ var showModel = (title, content) => {
     })
 }
 
-module.exports = { formatTime, showBusy, showSuccess, showModel }
+//跳转到登录页面
+function jumpToLogin(url) {
+  wx.showModal({
+    title: '请先登录',
+    content: '大哥你谁啊？',
+    confirmText: '去登录',
+    showCancel: false,
+    success(res) {
+      wx.switchTab({
+        url: url,
+      })
+    }
+  })
+}
+
+module.exports = { formatTime, showBusy, showSuccess, showModel, jumpToLogin:  jumpToLogin }

@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <swiper class="swiper" indicator-dots autoplay>
   <block wx:for="{{imgUrls}}" wx:key="*this" >
-    <swiper-item >
+    <swiper-item>
       <image class="image" bindtap='bindImageTap' src="{{item}}" mode='aspectFill'>
       </image>
     </swiper-item>
@@ -11,7 +11,7 @@
 <view class="gap-1"></view>
 <view class="showMenu">
   <view class="menuList" wx:for="{{menu}}" wx:key="">
-    <image class="menuImg" src="{{item.menuImage}}"></image>
+    <image class="menuImg" bindtap="bindMenuTap" src="{{item.menuImage}}" data-index='{{index}}'></image>
     <view class="menuDesc">{{item.descs}}</view>
   </view>
 </view>
@@ -19,12 +19,10 @@
 
 <view class="list" style="flex-direction:column">
   <view class="bulletinTitle">公告栏</view>
-  <block wx:for="{{listData}}" wx:key="*this" wx:if="{{index<4}}">
-    <view class="listItem">
-      <image class="icon" src="../../image/star.png" mode='aspectFill'>
-      </image>
-      <text  class="bulletin" bindtap='bindBullTap' data-index='{{index}}'>{{item.title}}</text>
-    </view>
+  <block wx:for="{{listData}}" wx:key="" wx:if="{{index<4}}">
+    <view class="listItem" bindtap='bindBullTap' data-index='{{index}}'>
+      <image class="icon" src="../../image/star.png" mode='aspectFill'></image>
+      {{item.title}}</view>
   </block>
 </view>
 

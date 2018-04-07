@@ -1,18 +1,46 @@
 // pages/toWork/addBull.js
+
+var config = require('../../../config')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    title: '',
+    detail: ''
   },
 
+  save: function(e){
+    console.log(e.detail.value)
+    var that = this;
+    wx.request({
+      url: config.service.host + "/weapp/writeNoticeInfo",
+      data: {
+        title: e.detail.value.title,
+        detail: e.detail.value.detail,
+      },
+      header: {'content-type': 'application/x-www-form-urlencoded'},
+      method: 'GET',
+      success: function(res) {
+        
+        console.log(res)
+      },
+      fail: function(res) {
+        console.log("发布失败")
+      },
+      complete: function(res) {},
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.setNavigationBarTitle({//动态设置当行栏标题
+      title: "新建公告"
+    })
   },
 
   /**

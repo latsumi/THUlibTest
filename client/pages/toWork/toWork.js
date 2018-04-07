@@ -1,5 +1,8 @@
 //toWork.js
+var util = require('../../utils/util.js')
+
 var app = getApp()
+
 
 Page({
 
@@ -14,6 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     /*setTimeout(
       function() {
         wx.redirectTo({
@@ -34,7 +38,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    if (app.globalData.authority < 1) {
+      util.jumpToLogin('../me/me')
+    }
   },
 
   /**

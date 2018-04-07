@@ -1,12 +1,13 @@
-/* pages/toWork/addBull.wxss */
+/* pages/toWork/editQuestionnaire/editQuestionnaire.wxss */
 
 .log-list {
   display: flex;
   flex-direction: column;
   margin: 8px;
   padding: 40rpx;
+}
+.border {
   border: 2px solid #808080;
-  
 }
 
 .submit
@@ -21,5 +22,13 @@
 
 .label
 {
+  margin-top: 10px;
   margin-left: 20px;
+}
+.form {
+  width: 690rpx;
+}
+.checkboxGroup{
+  width: 520rpx;
+  margin: 8px;
 }

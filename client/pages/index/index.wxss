@@ -72,19 +72,16 @@
   border-color: hsl(285, 90%, 90%);
   background-color: hsl(285, 90%, 90%);
   margin: 8px 8px;
+  padding: 1px 0;
   align-items: left;
   overflow: hidden;
   white-space: nowrap;
   text-overflow:ellipsis;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-.bulletin {
-  margin: 10px;
   font-size: 40rpx;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  text-align: center;
 }
 .icon {
   width: 12px;
   height: 12px;
+  margin-right: 10px;
 }

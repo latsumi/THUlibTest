@@ -7,7 +7,7 @@
 </view>
 <label class="label">正文</label>
 <view class="log-list">
-<textarea name="context" value="{{context}}" auto-height placeholder="输入公告内容" maxlength="-1"/>
+<textarea name="detail" value="{{detail}}" auto-height placeholder="输入公告内容" maxlength="-1"/>
 </view>
-<view class="submit"><button form-type="submit">发布</button></view>
+<view class="submit"><button type="primary" form-type="submit">发布</button></view>
 </form>

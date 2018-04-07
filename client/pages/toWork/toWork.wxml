@@ -1,3 +1,5 @@
 <!--toWork.wxml-->
-<view class="temp"><navigator url="addBull">新建公告</navigator></view>
-<view class="temp"><navigator url="bullList">编辑公告</navigator></view>
+<navigator url="editBull/addBull" hover-class="none"><view class="temp">新建公告</view></navigator>
+<navigator url="editBull/bullList" hover-class="none"><view class="temp">编辑公告</view></navigator>
+<navigator url="editQuestionnaire/addQuestionnaire" hover-class="none"><view class="temp">新建问卷</view></navigator>
+<navigator url="editQuestionnaire/questionnaireView" hover-class="none"><view class="temp">编辑问卷</view></navigator>
