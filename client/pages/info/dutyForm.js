@@ -31,10 +31,10 @@ Page({
   onLoad: function (options) {
     var date = new Date();
     var day = date.getDay();
+    if(day==0) day = 7;
     this.setData({
       currentDay: day,
     }); 
-
   },
 
   /**
@@ -48,19 +48,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData.authority < 1) {
-      wx.showModal({
-        title: '请先登录',
-        content: '大哥你谁啊？',
-        confirmText: '去登录',
-        showCancel: false,
-        success(res) {
-          wx.switchTab({
-            url: '../me/me',
-          })
-        }
-      })
-    }
+
   },
 
   /**

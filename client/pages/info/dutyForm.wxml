@@ -9,12 +9,11 @@
       <view class="th">队员</view>
     </view>
     <view class="tr bg-detail" wx:for="{{classes}}" wx:key="" wx:for-index="j" wx:if="{{j<4}}">
-    <view class="detail" wx:if="{{j==0&&i>=5}}">{{classesHoliday[0]}}</view>
+    <view class="detail" wx:if="{{j==0&&i>=5}}">{{classesHoliday[j]}}</view>
     <view class="detail" wx:else>{{item}}</view>
-    <view class="detail">{{persons[j+4*i]}}</view>
+    <view class="detail">11*{{persons[j+4*i]}}</view>
     </view>
     </swiper-item>
-
   </block>
   </swiper>
 </view>

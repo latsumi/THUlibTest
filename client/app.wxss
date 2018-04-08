@@ -6,4 +6,42 @@
   box-sizing: border-box;
   justify-content: space-between;
 } 
+/*组件间隔*/
+.gap {
+  margin-top: 3px;   
+  width: 100%;  
+  height: 5rpx;  
+  background: #EEEEEE;  
+}
+/*带图片的菜单栏*/
+.showMenu {
+  width: 100%;
+  margin: 15rpx 0;
+  height: 150rpx;
+  }
+.showMenu:after{  
+  content: "";  
+  display: block;  
+  clear: both;  
+}  
+.menuList{  
+  float: left;  
+  width: 25%;  
+  box-sizing: border-box;  
+  padding-bottom: 10px;  
+}  
+.menuImg {  
+  width: 120rpx;  
+  height: 120rpx;  
+  display: block;  
+  margin: 0 auto;  
+  margin-bottom: 5px;  
+} 
+.menuDesc{  
+  color: #333333;  
+  width: 100%;  
+  text-align: center;
+  display: block;  
+  font-size: 25rpx; 
+}  
 

@@ -8,14 +8,14 @@
   </block>
 </swiper>
 
-<view class="gap-1"></view>
+<view class="gap"></view>
 <view class="showMenu">
   <view class="menuList" wx:for="{{menu}}" wx:key="">
     <image class="menuImg" bindtap="bindMenuTap" src="{{item.menuImage}}" data-index='{{index}}'></image>
     <view class="menuDesc">{{item.descs}}</view>
   </view>
 </view>
-<view class="gap-1"></view>
+<view class="gap"></view>
 
 <view class="list" style="flex-direction:column">
   <view class="bulletinTitle">公告栏</view>

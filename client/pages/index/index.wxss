@@ -1,4 +1,5 @@
 /**index.wxss**/
+
 /**以下控制轮播图**/
 .swiper {
   margin: 0 auto;
@@ -7,46 +8,6 @@
 }
 .image {
   width: 100%;
-}
-
-/**以下控制菜单栏**/
-.showMenu {
-  width: 100%;
-  margin: 15rpx 0;
-  height: 150rpx;
-  }
-.showMenu:after{  
-  content: "";  
-  display: block;  
-  clear: both;  
-}  
-.menuList{  
-  float: left;  
-  width: 25%;  
-  box-sizing: border-box;  
-  padding-bottom: 10px;  
-}  
-.menuImg {  
-  width: 120rpx;  
-  height: 120rpx;  
-  display: block;  
-  margin: 0 auto;  
-  margin-bottom: 5px;  
-} 
-.menuDesc{  
-  background-color: #ffffff;  
-  color: #333333;  
-  width: 100%;  
-  text-align: center;
-  display: block;  
-  font-size: 25rpx; 
-}  
- 
-.gap-1 {
-  margin-top: 3px;   
-  width: 100%;  
-  height: 5rpx;  
-  background: #EEEEEE;  
 }
 
 /**以下控制公告栏**/
@@ -58,7 +19,6 @@
   box-shadow: 4px 1px 1px #cccccc;
   position: relative;
   background-color: hsl(270, 50%, 80%);
-  /**background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522321426663&di=bc5c71dbe8ff0dee32060af4f9e054f9&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D3884556198%2C3015661182%26fm%3D214%26gp%3D0.jpg");**/
 }
 .bulletinTitle {
   margin-top: 7px;

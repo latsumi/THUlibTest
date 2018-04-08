@@ -17,22 +17,10 @@ Page({
     hasUserInfo: false,
 
     menu:[
-      {
-        menuImage: "../../image/contacts_socialScience.png",
-        descs: "通讯录(社科)",
-      },
-      {
-        menuImage: "../../image/contacts_science&tech.png",
-        descs: "通讯录(科技)",
-      }, 
-      {
-        menuImage: "../../image/dutyForm_socialScience.png",
-        descs: "排班表(社科)",
-      }, 
-      {
-        menuImage: "../../image/dutyForm_science&tech.png",
-        descs: "排班表(科技)",
-      },
+      { menuImage: "../../image/contacts_socialScience.png", descs: "通讯录(社科)" },
+      { menuImage: "../../image/contacts_science&tech.png", descs: "通讯录(科技)" }, 
+      { menuImage: "../../image/dutyForm_socialScience.png", descs: "排班表(社科)"}, 
+      { menuImage: "../../image/dutyForm_science&tech.png", descs: "排班表(科技)" },
     ]
   },
 

@@ -14,25 +14,14 @@ Page({
     logged: false,
     takeSession: false,
     requestResult: '',
-    menu: [
-      {
-        menuImage: "../../image/questionnaire.png",
-        descs: "填写问卷",
-      },
-      {
-        menuImage: "../../image/workingHours.png",
-        descs: "工时查看",
-      },
-      {
-        menuImage: "../../image/messageBox.png",
-        descs: "留言箱",
-      },
-      {
-        menuImage: "../../image/contactUs.png",
-        descs: "联系我们",
-      },
-      
-      
+    menu:[
+      { menuImage: "../../image/questionnaire.png", descs: "填写问卷" },
+      { menuImage: "../../image/workingHours.png", descs: "工时查看" },
+      { menuImage: "../../image/messageBox.png", descs: "留言箱" },
+      { menuImage: "../../image/contactUs.png", descs: "联系我们" },
+      { menuImage: "../../image/beMember.png", descs: "成为队员" },
+      { menuImage: "../../image/beLeader.png", descs: "成为负责人" },
+      { menuImage: "../../image/beAdmin.png", descs: "成为管理员" },
     ]
 
   },
@@ -123,6 +112,24 @@ Page({
       }
       case 1:
         break;
+      case 4:
+      {
+        app.globalData.authority = 2;
+        util.showSuccess("权限等级:2");
+        break;
+      }
+      case 5:
+        {
+          app.globalData.authority = 3;
+          util.showSuccess("权限等级:3");
+          break;
+        }
+      case 6:
+        {
+          app.globalData.authority = 4;
+          util.showSuccess("权限等级:4");
+          break;
+        }
       default:
         break;
     }

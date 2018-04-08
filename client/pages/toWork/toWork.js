@@ -10,7 +10,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    authority: '',
+    menu: [
+      { menuImage: "../../image/leave.png", descs: "请假", x: 300, y: 625 },//下
+      { menuImage: "../../image/wanted.png", descs: "求替", x: 75, y: 400 },//左
+      { menuImage: "../../image/signIn.png", descs: "签到", x: 300, y: 400 },//中
+      { menuImage: "../../image/viewTask.png", descs: "查看排架",x:525,y:400},//右 
+      { menuImage: "../../image/helpWanted.png", descs: "去替班",x:300,y:175 },//上 
+    ],
+    func: [
+      {
+        topic: "负责人",
+        color: '#F6F6F6',
+        option:[{ descs: "检查签到", url: "" },
+          { descs: "去排架", url: "" },
+          { descs: "填写备注", url: "" },
+          { descs: "查看替班", url: "" }],
+      },
+      {
+        topic: "队委-公告",
+        color: 'hsl(270, 40%, 95%)',
+        option: [{ descs: "新建公告", url: "editBull/addBull" },
+          { descs: "编辑公告", url: "editBull/bullList" }],
+      }, 
+      {
+        topic: "队委-问卷",
+        color: 'hsl(270, 40%, 95%)',
+        option: [{ descs: "新建问卷", url: "editQuestionnaire/addQuestionnaire" },
+        { descs: "编辑问卷", url: "editQuestionnaire/questionnaireView" }],
+      },
+      {
+        topic: "队委-排班",
+        color: 'hsl(270, 40%, 95%)',
+        option: [{ descs: "初版排班", url: "" },
+        { descs: "编辑初版", url: "" },
+        { descs: "编辑终版", url: "" }],
+      },
+      ],
+
   },
 
   /**
@@ -40,6 +77,11 @@ Page({
   onShow: function () {
     if (app.globalData.authority < 1) {
       util.jumpToLogin('../me/me')
+    }
+    else{
+      this.setData({
+        authority: app.globalData.authority
+      })
     }
   },
 
