@@ -2,6 +2,7 @@
 var qcloud = require('../../vendor/wafer2-client-sdk/index')
 var config = require('../../config')
 var util = require('../../utils/util.js')
+var http = require('../../utils/http')
 const app = getApp()
 
 Page({
@@ -14,6 +15,9 @@ Page({
     logged: false,
     takeSession: false,
     requestResult: '',
+    authority: '',
+    name: '',
+    library: '',
     menu:[
       { menuImage: "../../image/questionnaire.png", descs: "填写问卷" },
       { menuImage: "../../image/workingHours.png", descs: "工时查看" },
@@ -26,49 +30,92 @@ Page({
 
   },
   login: function () {
+    //下面的句子在实际运用中可能会导致bug
     if (this.data.logged) return
-
-    util.showBusy('正在登录')
     var that = this
-
-    // 调用登录接口
-    qcloud.login({
-      success(result) {
-        //记得删下面的句子
-        app.globalData.authority = 1
-        console.log(app.globalData.authority)
-        if (result) {
-          util.showSuccess('登录成功')
-          that.setData({
-            userInfo: result,
-            logged: true,
-          })
-        } else {
-          // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
-          qcloud.request({
-            url: config.service.requestUrl,
-            login: true,
-            success(result) {
+    wx.authorize({
+      scope: 'scope.userInfo',
+      success(res) {
+        console.log('授权成功')
+        util.showBusy('正在登录')
+        // 调用登录接口
+        qcloud.login({
+          success(result) {
+            /*if (result) {
               util.showSuccess('登录成功')
               that.setData({
-                userInfo: result.data.data,
-                logged: true
+                userInfo: result,
+                logged: true,
               })
-            },
-
-            fail(error) {
-              util.showModel('请求失败', error)
-              console.log('request fail', error)
-            }
-          })
-        }
+            } else {*/
+            // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
+            //修改：无论是否首次登录都重新请求用户信息
+            qcloud.request({
+              url: config.service.requestUrl,
+              login: true,
+              success(result) {
+                util.showSuccess('登录成功')
+                that.setData({
+                  userInfo: result.data.data,
+                  logged: true
+                })
+              },
+              fail(error) {
+                util.showFail('请求失败', '请请检查网络连接')
+                console.log('request fail', error)
+              },
+              complete() {//根据用户的openId去通讯录查询权限
+                app.globalData.userInfo = that.data.userInfo
+                console.log(app.globalData.userInfo)
+                var data = {}
+                data.openId = that.data.userInfo.openId
+                http.POST({
+                  url: 'getStatus',
+                  data: data,
+                  success: function (res) {
+                    that.setData({
+                      authority: res.data.data[0].status,
+                      name: res.data.data[0].name,
+                      library: res.data.data[0].library,
+                    })
+                    console.log('返回值为：', res.data.data)
+                    //下面的赋值语句待修改
+                    app.globalData.authority = that.data.authority=='班负'?3:1
+                    app.globalData.name = that.data.name
+                    app.globalData.library = that.data.library
+                    console.log(app.globalData)
+                  },
+                  fail: function (res) {
+                    util.showNetworkFail()
+                  }, complete: function (res) { },
+                })
+              }
+            })
+            
+          },
+          fail(error) {
+            util.showFail('登录失败', '请检查网络连接')
+            console.log('登录失败', error)
+          },
+          
+        })
       },
-
-      fail(error) {
-        util.showModel('登录失败', error)
-        console.log('登录失败', error)
+      fail(res) {
+        wx.showModal({
+          title: '请求授权失败',
+          content: '将无法使用小程序的大部分功能，要转到设置界面去授权吗？',
+          success: function (res) {
+            if(res.confirm){
+              wx.openSetting({
+                //重新获取用户信息
+              })
+            }
+          }
+        })
       }
     })
+    
+    
   },
 
   
@@ -101,17 +148,27 @@ Page({
       {
         if(app.globalData.authority<1)
         {
-          util.showModel('请先登录', '大哥你谁啊？')
+          util.showFail('请先登录', '大哥你谁啊？')
         }
         else{
           wx.navigateTo({
-            url: 'questionnaireList',
+            url: '../toWork/editQuestionnaire/questionnaireView?urlFrom=me',
           })
         }
         break;
       }
-      case 1:
+      case 2:
+      {
+        
         break;
+      }
+      case 3:
+        {
+          wx.makePhoneCall({
+            phoneNumber: '18813139066',
+          })
+          break;
+        }
       case 4:
       {
         app.globalData.authority = 2;

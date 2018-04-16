@@ -1,59 +1,58 @@
 // pages/toWork/editQuestionnaire/questionnaireView.js
+var http = require('../../../utils/http')
+var util = require('../../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    listData: [
-      {
-        title: "【重要】2018年五一假期排班问卷",
-        quesId: "1st",
-        desc: "1.本问卷截止时间为第1周周四（9月21日）10:00，过时不候。\n2.本问卷为报班唯一途径。\n3.本问卷适用于正常工作期间", //标题下的描述
-        detail: "第一位数字表示星期，第二位字母A、B、C、D依次表示早班、午班、晚一、晚二。例如7C表示周日晚一。",//第5题上面对于班次细节的描述
-        isClass: true,//是否是排班问卷
-        canIChoose: ["1A", "1B", "2A", "2B", "3A", "3B",]
-      },
-      {
-        title: "2018年图书馆助理分队个人信息统计问卷",
-        quesId: "2nd",
-        desc: "",
-        detail: "",//第5题对于班次细节的描述，时间、可选项等等
-        isClass: false,//是否是排班问卷
-        canIChoose: []
-      },
-      {
-        title: "【重要】2017秋社科库16-18周报班",
-        quesId: "3rd",
-        desc: "1.本问卷截止时间为第1周周四（9月21日）10:00，过时不候。\n2.本问卷为报班唯一途径。\n3.本问卷适用于正常工作期间",
-        detail: "第一位数字表示星期，第二位字母A、B、C、D依次表示早班、午班、晚一、晚二。例如7C表示周日晚一。",//第5题对于班次细节的描述
-        isClass: true,//是否是排班问卷
-        canIChoose: ["1A", "2A", "3A", "4A", "5A"]
-      },
-      {
-        title: "2018秋调班问卷",
-        quesId: "4th",
-        desc: "多选，先到先得",
-        detail: "",//第5题对于班次细节的描述
-        isClass: true,//是否是排班问卷
-        canIChoose: ["6A", "6B", "6C", "6D", "7D"]
-      },
-    ],
+    listData: [],
+    urlTo: '',
+    urlFrom: '',
   },
+
   bindViewTap: function (event) {
-    console.log(event)
     var index = event.target.dataset.index
     var item = this.data.listData[index]
+    if (item.canIChoose != null){
+      var canIChoose = new Array()
+      canIChoose = item.canIChoose.split(',')
+    }
     wx.navigateTo({
-      url: 'editQuestionnaire?title=' + item.title + '&quesId=' + item.quesId + '&desc=' + item.desc + '&detail=' + item.detail + '&isClass=' + JSON.stringify(item.isClass) + '&canIChoose=' + JSON.stringify(item.canIChoose),
+      url: this.data.urlTo + '?title=' + item.title + '&id=' + item.id + '&descript=' + item.descript + '&detail=' + item.detail + '&isClass=' + JSON.stringify(item.isClass) + '&canIChoose=' + JSON.stringify(canIChoose),
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (res) {
     wx.setNavigationBarTitle({//动态设置当行栏标题
       title: "问卷列表"
+    })
+    var that = this;
+    var urlTo = '';
+    this.data.urlFrom = res.urlFrom; 
+
+    //为了实时刷新页面，onLoad函数使用了两遍！！！
+    if (res.urlFrom =='admin')
+      urlTo = 'editQuestionnaire'
+    else
+      urlTo = '../../me/questionnaireFill'
+    that.setData({
+      urlTo: urlTo
+    })
+    http.GET({
+      url: "listQues",
+      data: '',
+      success: function (res) {
+        that.setData({
+          listData: res.data.data
+        })
+      },
+      fail: function (res) {
+        util.showNetworkFail()
+      }, complete: function (res) { },
     })
   },
 
@@ -68,7 +67,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var temp = {urlFrom: this.data.urlFrom}
+    this.onLoad(temp)
   },
 
   /**

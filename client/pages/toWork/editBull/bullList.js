@@ -1,6 +1,7 @@
 // pages/toWork/bullList.js
 var config = require('../../../config')
-
+var http = require('../../../utils/http')
+var util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -18,22 +19,17 @@ Page({
       title: "公告列表"
     })
     var that = this;
-    wx.request({
-      url: config.service.host + "/weapp/listNoticeInfo",
-      data: {
-      },
-      header: { 'content-type': 'application/json' },
-      method: 'GET',
-      dataType: 'json',
+    http.GET({
+      url: "listNoticeInfo",
+      data: '',
       success: function (res) {
         that.setData({
           listData: res.data.data
         })
-
-
       },
-      fail: function (res) { },
-      complete: function (res) { },
+      fail: function (res) { 
+        util.showNetworkFail()
+      }, complete: function (res) { },
     })
   },
 
@@ -87,7 +83,6 @@ Page({
   },
 
   bindViewTap: function (event) {
-    console.log(event)
     var index = event.target.dataset.index
     var item = this.data.listData[index]
     wx.navigateTo({

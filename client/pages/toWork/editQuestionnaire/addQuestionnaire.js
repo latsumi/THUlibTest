@@ -1,4 +1,7 @@
 // pages/toWork/editQuestionnaire/addQuestionnaire.js
+var http = require('../../../utils/http')
+var util = require('../../../utils/util.js')
+
 Page({
 
   /**
@@ -31,8 +34,50 @@ Page({
     })
     console.log("是否全选： ", that.data.selectAll)
   },
+
   save: function (e) {
-    console.log("所提交的值为 ", e.detail.value);
+    var data = e.detail.value;
+    console.log(data)
+    if (data.title === '' || data.isClass === '' || data.descript === '' ||(data.canIChoose == false && data.isClass == 1)) {
+      if (data.title === '')  
+        util.showFailShort('标题不能为空！')
+      else {
+        if (data.isClass === '')
+          util.showFailShort('请选择问卷类型！')
+        else
+        {
+          if (data.descript === '')
+            util.showFailShort('请填写问卷描述！')
+          else
+            util.showFailShort('请勾选可选班次！')
+        } 
+      }
+    }
+    else {
+      wx.showModal({
+        title: '提示',
+        content: '确定发布问卷吗？',
+        success: function (res) {
+          if (res.confirm) {
+            util.showBusy('正在提交……')
+            http.POST({
+              url: "writeQues",
+              data: data,
+              success: function (res) {
+                wx.navigateBack({
+                  delta: 1
+                })
+                util.showSuccess('发布成功！')
+              },
+              fail: function (res) {
+                util.showFail('发布失败', '请稍后再试')
+              }, complete: function (res) { },
+            })
+          }
+        }
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载

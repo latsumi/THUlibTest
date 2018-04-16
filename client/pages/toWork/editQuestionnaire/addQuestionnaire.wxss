@@ -15,11 +15,6 @@
   margin-bottom: 120rpx;
 }
 
-.hide
-{
-  display: none;
-}
-
 .label
 {
   margin-top: 10px;

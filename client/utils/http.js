@@ -19,7 +19,6 @@ var requestHandler = {
 //GET请求
 function GET(requestHandler) {
   var header = { 'content-type': 'application/json' };
-  console.log(header)
   request('GET', header, requestHandler)
 }
 //POST请求

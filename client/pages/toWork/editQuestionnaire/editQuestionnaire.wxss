@@ -30,5 +30,18 @@
 }
 .checkboxGroup{
   width: 520rpx;
+  padding: 20rpx;
   margin: 8px;
+}
+.desc {
+  font-size: 30rpx;
+  padding-bottom: 5px;
+  color: red;
+  width:690rpx;
+}
+.switch {
+  width: 600rpx;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5rpx;
 }

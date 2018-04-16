@@ -1,6 +1,7 @@
 <!--pages/toWork/addBull.wxml-->
 
 <form bindsubmit="save">
+<view  style='margin-top:30px;'>  </view>
 <label class="label">标题</label>
 <view class="log-list">
 <input name="title" type="text" value="{{title}}" placeholder="标题"/>

@@ -6,7 +6,7 @@
     <view class="menuDesc memberMenuDesc">{{item.descs}}</view>
   </view>
 </block>
-
+<!--负责人和队委见到的菜单-->
 <block wx:if="{{authority>2}}">
 <view class="showMenu" style='margin-top:30px;'>
   <view class="menuList" wx:for="{{menu}}" wx:key="" style='width:20%'>

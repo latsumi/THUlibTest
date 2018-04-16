@@ -34,7 +34,9 @@ Page({
           listData: res.data.data
         })
       },
-      fail: function (res){}, complete: function (res){},
+      fail: function (res){
+        util.showNetworkFail()
+      }, complete: function (res){},
     })
   },
 
@@ -44,9 +46,34 @@ Page({
       util.jumpToLogin('../me/me')
     }
     else{
-      wx.navigateTo({
-        url: '../info/dutyForm',
-      })
+      switch(index){
+        case 0:{
+          wx.navigateTo({
+            url: '../info/addressList?urlFrom=0',
+          })
+          break;
+        }
+        case 1: {
+          wx.navigateTo({
+            url: '../info/addressList?urlFrom=1',
+          })
+          break;
+        }
+        case 2: {
+          wx.navigateTo({
+            url: '../info/dutyForm?urlFrom=0',
+          })
+          break;
+        }
+        case 3: {
+          wx.navigateTo({
+            url: '../info/dutyForm?urlFrom=1',
+          })
+          break;
+        }
+        default:
+          break;
+      }
     }
   },
   bindBullTap: function(event) {
@@ -72,7 +99,6 @@ Page({
     })
     wx.hideNavigationBarLoading() //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
-    
   },
   
 })

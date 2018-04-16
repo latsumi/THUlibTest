@@ -1,4 +1,8 @@
 // pages/me/questionnaireFill.js
+var http = require('../../utils/http')
+var util = require('../../utils/util.js')
+const app = getApp()
+
 Page({
 
   /**
@@ -6,12 +10,12 @@ Page({
    */
   data: {
     title: "",
-    quesId: "",
-    desc: "",//标题下的描述
-    detail: "",//第5题对于班次细节的描述
+    id: "",
+    descript: "",//标题下的描述
+    detail: "",//第5题对于班次细节的描述,或是信息收集问卷的问题
     isClass: false,//是否是排班问卷
     canIChoose: [],
-    radioFrom: [
+    radioLibrary: [
       { name: '社科', value: '0' },
       { name: '科技', value: '1' },
     ],
@@ -24,7 +28,56 @@ Page({
   },
   
   save: function (e) {
-    console.log("所提交的值为 ",e.detail.value);
+    var data = e.detail.value;
+    data.openId = app.globalData.userInfo.openId;
+    data.id = this.data.id;
+    data.isClass = this.data.isClass;
+    console.log("所提交的值为 ", data);
+
+    if (data.name === '' || data.studentNum === '' || data.library === '' || data.status === '' || (data.classes == false && data.isClass == 1)) {
+      if (data.name === '')
+        util.showFailShort('名字不能为空！')
+      else {
+        if (data.studentNum === '')
+          util.showFailShort('学号不能为空！')
+        else {
+          if (data.library === '')
+            util.showFailShort('请选择库区！')
+          else
+          {
+            if(data.status =='')
+              util.showFailShort('请选择队员类型！')
+            else
+              util.showFailShort('请勾选可选班次！')
+          }
+        }
+      }
+    }
+    else {
+      wx.showModal({
+        title: '提示',
+        content: '确定提交问卷吗？',
+        success: function (res) {
+          if (res.confirm) {
+            util.showBusy('正在提交……')
+            http.POST({
+              url: "upAnswerInfo",
+              data: data,
+              success: function (res) {
+                wx.navigateBack({
+                  delta: 1
+                })
+                util.showSuccess('提交成功！')
+              },
+              fail: function (res) {
+                util.showFail('提交失败', '请稍后再试')
+              }, complete: function (res) { },
+            })
+          }
+        }
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -40,13 +93,16 @@ Page({
       })
     this.setData({//取值并更新数据和UI
       title: res.title,
-      quesId: res.quesId,
-      desc: res.desc,//标题下的描述
-      detail: res.detail,//第5题对于班次细节的描述
+      id: res.id,
+      descript: res.descript,//标题下的描述
+      detail: res.detail,//第5题对于班次细节的描述,或是信息收集问卷的问题
       isClass: JSON.parse(res.isClass),//是否是排班问卷
-      canIChoose: JSON.parse(res.canIChoose),
     })
-    console.log(this.data.desc)
+    if ((!(res.canIChoose == null)) && this.data.isClass) {
+      this.setData({
+        canIChoose: JSON.parse(res.canIChoose),
+      })
+    }
   },
 
   /**

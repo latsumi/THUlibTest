@@ -1,7 +1,7 @@
 <!--pages/me/questionnaireFill.wxml-->
 <view class="sumQues">
   <view class="quesTitle">{{title}}</view>
-  <view style='width:690rpx;margin:12px 0;'><text class="desc">{{desc}}</text></view>
+  <view style='width:690rpx;margin:12px 0;'><text class="desc">{{descript}}</text></view>
 
   <form class="form" bindsubmit="save">
 
@@ -17,8 +17,8 @@
 
   <label class="label"> 3.来自库区</label>
   <view class="log-list">
-    <radio-group class="radio" name="from" >
-     <label wx:for="{{radioFrom}}" wx:key="">
+    <radio-group class="radio" name="library" >
+     <label wx:for="{{radioLibrary}}" wx:key="">
         <radio value="{{item.value}}"/>{{item.name}}
     </label>
   </radio-group>
@@ -33,7 +33,15 @@
    </radio-group>
   </view>
 
+  <!-- 收感想问卷独有问题 -->
+  <block wx:if="{{(!isClass)&&detail!=''}}">
+  <label class="label"> 5.{{detail}}</label>
+  <view class="log-list border-all">
+    <textarea name="answers" value="{{answers}}" style='height:150px;' placeholder="畅所欲言" maxlength="-1"/>
+  </view>
+  </block>
 
+  <!-- 排班问卷独有问题 -->
   <block wx:if="{{isClass}}">
   <label class="label"> 5.所报班次</label>
   <view style='width:690rpx;margin:8px 0;'><text class="desc">{{detail}}</text>

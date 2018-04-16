@@ -1,7 +1,8 @@
 // pages/toWork/editBull.js
 
 var config = require('../../../config')
-
+var http = require('../../../utils/http')
+var util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -18,12 +19,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (res) {
-    wx.showToast({
-      title: '正在加载',
-      icon: 'loading',
-      duration: 500
-    }),
-      wx.setNavigationBarTitle({//动态设置当行栏标题
+    util.showBusy('加载中...')
+    wx.setNavigationBarTitle({//动态设置当行栏标题
         title: "公告编辑"
       })
     this.setData({//取值并更新数据和UI
@@ -31,52 +28,67 @@ Page({
       detail: res.detail,
       id: res.id
     })
+    wx.hideToast()
   },
   delBull: function(e) {
     var that = this;
-    wx.request({
-      url: config.service.host + "/weapp/delNoticeInfo",
-      data: {
-        id: that.data.id
-      },
-      header: { 'content-type':'application/x-www-form-urlencoded'},
-
-      method: 'GET',
+    var id = that.data.id;
+    wx.showModal({
+      title: '提示',
+      content: '确定删除吗？',
       success: function (res) {
-        wx:wx.redirectTo({
-          url: 'bullList',
-        })
-      },
-      fail: function (res) { },
-      complete: function (res) { },
+        if (res.confirm) {
+          util.showBusy('正在删除')
+          http.POST({
+            url: "delNoticeInfo",
+            data: { id: id },
+            success: function (res) {
+              wx.navigateBack({
+                delta: 1
+              })
+              util.showSuccess('已删除')
+            },
+            fail: function (res) {
+                util.showFail('删除失败', '请稍后再试')
+            }, complete: function (res) { },
+            })
+          }
+        },
+      fail: function (res) { }, complete: function (res) { },
     })
   },
   save: function(e){
     var that = this;
-    wx.showToast({
-      title: '正在保存',
-      icon: 'loading',
-      duration: 500
-    }),
-    wx.request({
-      url: config.service.host + "/weapp/updateNoticeInfo",
-      data: {
-        title: e.detail.value.detail,
-        id: that.data.id,
-        datail: e.detail.value.detail,
-      },
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
-
-      method: 'GET',
+    var data = e.detail.value;
+    var id = that.data.id;
+    wx.showModal({
+      title: '提示',
+      content: '确定修改吗？',
       success: function (res) {
-        console.log(e.detail.value.detail)
-        wx: wx.redirectTo({
-          url: 'bullList',
-        })
+        if (res.confirm) {
+          util.showBusy('提交中...')
+          http.POST({
+            url: "updateNoticeInfo",
+            data: {
+              title: data.title,
+              detail: data.detail,
+              id: id,
+            },
+            success: function (res) {
+              wx.navigateBack({
+                delta: 1
+              })
+              util.showSuccess('修改成功')
+            },
+            fail: function (res) {
+              util.showFail('提交失败', '请稍后再试')
+            }, complete: function (res) { },
+          })
+        }
       },
-      fail: function (res) { },
-      complete: function (res) { },
+      fail: function (res) { }, complete: function (res) { },
     })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

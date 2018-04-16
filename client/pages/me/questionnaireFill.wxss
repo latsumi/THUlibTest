@@ -7,19 +7,6 @@
   padding: 20rpx;
 }
 
-.border {
-  border-bottom: 2px solid #808080;
-}
-.submit
-{
-  padding: 20rpx;
-}
-
-.hide
-{
-  display: none;
-}
-
 .label
 {
   margin-top: 10px;
@@ -57,7 +44,7 @@
   width: 690rpx;
 }
 .classes{
-  width: 500rpx;
+  width: 520rpx;
   margin: 8px;
 }
 

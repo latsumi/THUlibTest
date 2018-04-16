@@ -22,7 +22,7 @@ Page({
       {
         topic: "负责人",
         color: '#F6F6F6',
-        option:[{ descs: "检查签到", url: "" },
+        option:[{ descs: "检查签到", url: "leaderWork/checkSignIn" },
           { descs: "去排架", url: "" },
           { descs: "填写备注", url: "" },
           { descs: "查看替班", url: "" }],
@@ -37,31 +37,48 @@ Page({
         topic: "队委-问卷",
         color: 'hsl(270, 40%, 95%)',
         option: [{ descs: "新建问卷", url: "editQuestionnaire/addQuestionnaire" },
-        { descs: "编辑问卷", url: "editQuestionnaire/questionnaireView" }],
+        { descs: "编辑问卷", url: "editQuestionnaire/questionnaireView?urlFrom=admin"}],
       },
       {
         topic: "队委-排班",
         color: 'hsl(270, 40%, 95%)',
-        option: [{ descs: "初版排班", url: "" },
-        { descs: "编辑初版", url: "" },
-        { descs: "编辑终版", url: "" }],
+        option: [{ descs: "初版排班", url: "editDutyForm/makeDutyForm" },
+          { descs: "发布排班", url: "editDutyForm/publishDutyForm" }],
+      },
+      {
+        topic: "队委-工时",
+        color: 'hsl(270, 40%, 95%)',
+        option: [{ descs: "统计工时", url: "editManHour/countManHour" },]
       },
       ],
 
   },
-
+  bindMenuTap: function(e){
+    var index = e.target.dataset.index
+    switch(index){
+      case 2:
+      {
+        wx.navigateTo({
+          url: 'routines/signIn',
+        })
+        break;
+      }
+      default:
+      {
+        wx.showModal({
+          title: '此处施工中',
+          content: '敬请期待',
+          showCancel: false
+        })
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     
-    /*setTimeout(
-      function() {
-        wx.redirectTo({
-          url: '../index/index',
-        })
-      },3000
-    )*/
+
   },
 
   /**

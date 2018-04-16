@@ -13,11 +13,6 @@
   padding: 20rpx;
 }
 
-.hide
-{
-  display: none;
-}
-
 .label
 {
   margin-top: 10px;

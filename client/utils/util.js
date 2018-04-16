@@ -31,7 +31,6 @@ var showSuccess = text => wx.showToast({
 // 显示失败提示
 var showModel = (title, content) => {
     wx.hideToast();
-
     wx.showModal({
         title,
         content: JSON.stringify(content),
@@ -41,6 +40,7 @@ var showModel = (title, content) => {
 
 //跳转到登录页面
 function jumpToLogin(url) {
+  wx.hideToast();
   wx.showModal({
     title: '请先登录',
     content: '大哥你谁啊？',
@@ -53,5 +53,35 @@ function jumpToLogin(url) {
     }
   })
 }
+// 显示失败提示 自定义提示内容
+var showFail = (title, content) => {
+  wx.hideToast();
+  wx.showModal({
+    title,
+    content: content,
+    showCancel: false
+  })
+}
+// 用于操作错误的提示
+var showFailShort = text => wx.showToast({
+  title: text,
+  icon: 'none',
+})
+// 用于网络连接失败的提示
+var showNetworkFail = () => {
+  wx.hideToast();
+  wx.showModal({
+    title: '加载失败',
+    content: '请检查网络连接！',
+    showCancel: false,
+    success: function (res) {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+  })
+}
 
-module.exports = { formatTime, showBusy, showSuccess, showModel, jumpToLogin:  jumpToLogin }
+
+
+module.exports = { formatTime, showBusy, showSuccess, showModel, jumpToLogin: jumpToLogin, showFail, showFailShort, showNetworkFail }

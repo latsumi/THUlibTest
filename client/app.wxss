@@ -44,4 +44,38 @@
   display: block;  
   font-size: 25rpx; 
 }  
+/*表单格式*/
+.inputArea {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  padding: 40rpx;
+}
+.submit
+{
+  padding: 20rpx;
+}
+.label
+{
+  margin-top: 15px;
+  margin-left: 20px;
+}
+.border {
+  border-bottom: 2px solid #808080;
+}
+.border-all {
+  border: 2px solid #808080;
+}
+.picker {
+  padding: 10px;
+  margin: 8px;
+  border: 2px solid #FFFFFF;
+  border-radius: 5px;
+  box-shadow: 4px 1px 1px #cccccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#F6F6F6;
+}
+
 

@@ -10,11 +10,17 @@
     "pages/toWork/editBull/bullList",
     "pages/info/dutyForm",
     "pages/me/me",
-    "pages/me/questionnaireList",
     "pages/me/questionnaireFill",
     "pages/toWork/editQuestionnaire/addQuestionnaire",
     "pages/toWork/editQuestionnaire/editQuestionnaire",
-    "pages/toWork/editQuestionnaire/questionnaireView"
+    "pages/toWork/editQuestionnaire/questionnaireView",
+    "pages/toWork/editDutyForm/publishDutyForm",
+    "pages/toWork/editDutyForm/makeDutyForm",
+    "pages/info/addressList",
+    "pages/info/addressDetail",
+    "pages/toWork/routines/signIn",
+    "pages/toWork/leaderWork/checkSignIn",
+    "pages/toWork/editManHour/countManHour"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -54,5 +60,4 @@
       }
     ]
   }
-
 }

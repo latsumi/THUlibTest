@@ -7,11 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    urlFrom: '',
+    formTitle:'2018年春季学期社科库第2-8周排班表',
     persons: [
       "吴智光 邵宗义 于洋懿 张雨萌 李焕星",
       "萧霭静 盛忠凯 李颖柯 郭一橙 俞发磊 耿耀君 孙立猛",
       "陈九成 王杰 马晓辉 郑在文 张丁月 杨哲 王玉 冉林鑫",
-      "周杰伦 林俊杰 潘玮柏 陈奕迅",
+      "周杰伦 林俊杰 潘玮柏 陈奕迅 一定要 凑够了 八个人 有时候 九个人",
 
       "周磊 次仁曲吉 葛书源 涂俊 李璐效",
       "2",
@@ -28,13 +30,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (res) {
     var date = new Date();
     var day = date.getDay();
     if(day==0) day = 7;
     this.setData({
       currentDay: day,
-    }); 
+      urlFrom: res.urlFrom
+    })
+    wx.setNavigationBarTitle({//动态设置当行栏标题
+      title: this.data.urlFrom==0?'社科排班表':'科技排班表'
+    })
   },
 
   /**

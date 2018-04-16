@@ -4,9 +4,10 @@ var config = require('./config')
 
 App({
   globalData:{
-    openID: '',
+    name: '',
+    library: '',
     authority: 0,
-
+    userInfo: [],
   },
 
   onLaunch: function () {
