@@ -1,27 +1,30 @@
 // pages/info/addressDetail.js
+var http = require('../../utils/http')
+var util = require('../../utils/util')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    data: { name: '张三', studentNum: '2222222222', sex: '男', department: '生命科学', tel: '18888888888', mail: 'xxx15@mails.tsinghua.edu.cn', address: '紫荆公寓三号楼608A', status:'班次负责人'},
+    name: '',
+    studentNum: '',
     listData: [
-      { key: '姓名', value: '' },
-      { key: '学号', value: '' },
-      { key: '性别', value: '' },
-      { key: '院系', value: '' },
-      { key: '手机', value: '' },
-      { key: '邮箱', value: '' },
-      { key: '住址', value: '' },
-      { key: '备注', value: '' },],
+      { name: 'name', key: '姓名', value: '' },
+      { name: 'studentNum', key: '学号', value: '' },
+      { name: 'sex', key: '性别', value: '' },
+      { name: 'department', key: '院系', value: '' },
+      { name: 'tel', key: '手机', value: '' },
+      { name: 'mail', key: '邮箱', value: '' },
+      { name: 'address', key: '住址', value: '' },
+      { name: 'status', key: '备注', value: '' },],
     descs: '↓点击手机号拨打电话↓',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (res) {
     wx.showToast({
       title: '正在加载',
       icon: 'loading',
@@ -30,14 +33,34 @@ Page({
     wx.setNavigationBarTitle({//动态设置当行栏标题
       title: '详细信息'
     })
-    var i = 0
-    for(var x in this.data.data){
-      var str = 'listData[' + i + '].value'
-      this.setData({
-        [str]: this.data.data[x]
-      })
-      i++
-    }
+    this.setData({
+      name: res.name,
+      studentNum: res.studentNum,
+    })
+    var that = this;
+    http.POST({
+      url: 'getStudentInfo',
+      data: { name: that.data.name, studentNum: that.data.studentNum },
+      success: function (res) {
+        console.log(res.data.data)
+        for (var x in res.data.data[0]) {
+          for(var j=0;j<that.data.listData.length;j++){
+            if (that.data.listData[j].name==x)
+            {
+              var str1 = 'listData[' + j + '].value'
+              that.setData({
+                [str1]: res.data.data[0][x]
+              })
+              break;
+            }
+          }
+        }
+      },
+      fail: function (res) {
+        util.showNetworkFail()
+      }, complete: function (res) { },
+    })
+
   },
 
   bindPhoneTap: function(e){

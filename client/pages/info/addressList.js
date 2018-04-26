@@ -1,4 +1,6 @@
 // pages/info/addressList.js
+var http = require('../../utils/http')
+var util = require('../../utils/util')
 Page({
 
   /**
@@ -8,23 +10,7 @@ Page({
     urlFrom: '',
     formTitle: '',
     descs: '↓点击姓名查看详细信息↓',
-    listData: [
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-      { name: '张三', studentNum: 2015345678 },
-    ]
+    listData: []
 
   },
   bindNameTap: function(event){
@@ -59,7 +45,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    var library = that.data.urlFrom;
+    http.POST({
+      url: 'getAddressList',
+      data: {library:library},
+      success: function (res) {
+        that.setData({
+          listData: res.data.data
+        })
+      },
+      fail: function (res) {
+        util.showNetworkFail()
+      }, complete: function (res) { },
+    })
   },
 
   /**

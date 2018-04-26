@@ -1,23 +1,16 @@
-/* pages/info/dutyForm.wxss */
-
+/* pages/me/manHourView.wxss */
 .table {
   border: 0px solid darkgray;
   margin-bottom: 200rpx;
+  margin-top: 160rpx; 
 }
-.formTitle {
-  margin: 20rpx 30rpx;
-  width: 690rpx;
-  font-weight:bold;
-  font-size: 40rpx;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+.descs {
   display: flex;
-  flex-direction:row;
+  width: 100%;
   justify-content: center;
-}
-.dutySwiper {
-  margin: 0 auto;
-  width: 750rpx;
-  height: 1000rpx;
+  align-items: center;
+  height: 80rpx;
+  font-size: 20rpx;
 }
 .tableRow {
   display: flex;
@@ -32,13 +25,6 @@
   display: flex;
   align-items: center;
 }
-.week {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  height: 80rpx;
-}
 .detail {
   margin: 0 5px;
   justify-content: center;
@@ -48,7 +34,7 @@
   width: 50%
 }
 .rightWidth {
-  width: 65%
+  width: 60%
 }
 .bg-title{
   background-color: hsl(270, 60%, 80%);

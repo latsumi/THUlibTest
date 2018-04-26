@@ -80,7 +80,7 @@ Page({
                     })
                     console.log('返回值为：', res.data.data)
                     //下面的赋值语句待修改
-                    app.globalData.authority = that.data.authority=='班负'?3:1
+                    app.globalData.authority = that.data.authority=='队委'?4:1
                     app.globalData.name = that.data.name
                     app.globalData.library = that.data.library
                     console.log(app.globalData)
@@ -142,53 +142,59 @@ Page({
 
   bindMenuTap: function (event) {
     var index = event.target.dataset.index
-    switch(index)
-    {
-      case 0:
+    if (app.globalData.authority < 1&&index<4) {
+      util.showFail('请先登录', '大哥你谁啊？')
+    }
+    else {
+      switch(index)
       {
-        if(app.globalData.authority<1)
+        case 0:
         {
-          util.showFail('请先登录', '大哥你谁啊？')
-        }
-        else{
           wx.navigateTo({
             url: '../toWork/editQuestionnaire/questionnaireView?urlFrom=me',
           })
+          break;
         }
-        break;
-      }
-      case 2:
-      {
-        
-        break;
-      }
-      case 3:
+        case 1:
         {
-          wx.makePhoneCall({
-            phoneNumber: '18813139066',
+          wx.navigateTo({
+            url: 'manHourView',
           })
           break;
         }
-      case 4:
-      {
-        app.globalData.authority = 2;
-        util.showSuccess("权限等级:2");
-        break;
+        case 2:
+        {
+          
+          break;
+        }
+        case 3:
+          {
+            wx.makePhoneCall({
+              phoneNumber: '18813139066',
+            })
+            break;
+          }
+        case 4:
+        {
+          app.globalData.authority = 2;
+          util.showSuccess("权限等级:2");
+          break;
+        }
+        case 5:
+          {
+            app.globalData.authority = 3;
+            util.showSuccess("权限等级:3");
+            break;
+          }
+        case 6:
+          {
+            app.globalData.authority = 4;
+            util.showSuccess("权限等级:4");
+            break;
+          }
+        default:
+          break;
       }
-      case 5:
-        {
-          app.globalData.authority = 3;
-          util.showSuccess("权限等级:3");
-          break;
-        }
-      case 6:
-        {
-          app.globalData.authority = 4;
-          util.showSuccess("权限等级:4");
-          break;
-        }
-      default:
-        break;
     }
   },
 

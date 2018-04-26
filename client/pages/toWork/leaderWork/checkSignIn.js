@@ -19,7 +19,7 @@ Page({
       { id: 11, name: '荆潇', library: 1, workType: 0, isLeader: 0, manHour: 2, isRelief: 0},
     ],
     showData:[],
-    library: 2,
+    library: 0,
     currentDay: '',
     classes: ['早班', '午班', '晚一', '晚二',],
     manHour: ['1.5h', '2h', '2.5h', '3h'],
@@ -40,9 +40,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    /*this.setData({
+    this.setData({
       library: app.globalData.library
-    })*/
+    })
     var str = ''
     if (this.data.library == 1)
       str = '-科技库'
