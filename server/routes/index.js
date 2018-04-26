@@ -33,3 +33,42 @@ router.get('/message', controllers.message.get)
 router.post('/message', controllers.message.post)
 
 module.exports = router
+
+router.get('/test', controllers.test)
+
+
+//about notice
+
+router.get('/listNoticeInfo', controllers.listNoticeInfo)
+
+
+//router.get('/writeNoticeInfo', controllers.writeNoticeInfo)
+router.post('/writeNoticeInfo', controllers.writeNoticeInfo)
+
+router.get('/delNoticeInfo', controllers.delNoticeInfo)
+router.post('/delNoticeInfo', controllers.delNoticeInfo)
+
+//router.get('/updateNoticeInfo', controllers.updateNoticeInfo)
+router.post('/updateNoticeInfo', controllers.updateNoticeInfo)
+
+//about question
+router.get('/listQues', controllers.listQues)
+
+//router.get('/writeQues', controllers.writeQues)
+router.post('/writeQues', controllers.writeQues)
+
+//router.get('/delQues', controllers.delQues)
+router.post('/delQues', controllers.delQues)
+
+//router.get('/updateQues', controllers.updateQues)
+router.post('/updateQues', controllers.updateQues)
+
+router.post('/getStatus', controllers.getStatus)
+router.post('/getAddressList', controllers.getAddressList)
+router.post('/getStudentInfo', controllers.getStudentInfo)
+
+router.post('/upAnswerInfo', controllers.upAnswerInfo)
+
+router.get('/listSchedule', controllers.listSchedule)
+router.post('/updateSchedule', controllers.updateSchedule)
+router.post('/createSchedule', controllers.createSchedule)
