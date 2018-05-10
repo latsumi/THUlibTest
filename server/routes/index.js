@@ -50,6 +50,7 @@ router.post('/delNoticeInfo', controllers.delNoticeInfo)
 
 //router.get('/updateNoticeInfo', controllers.updateNoticeInfo)
 router.post('/updateNoticeInfo', controllers.updateNoticeInfo)
+router.post('/topNoticeInfo',controllers.topNoticeInfo)
 
 //about question
 router.get('/listQues', controllers.listQues)
@@ -72,3 +73,13 @@ router.post('/upAnswerInfo', controllers.upAnswerInfo)
 router.get('/listSchedule', controllers.listSchedule)
 router.post('/updateSchedule', controllers.updateSchedule)
 router.post('/createSchedule', controllers.createSchedule)
+
+router.post('/bindInfo', controllers.bindInfo)
+
+router.post('/signinTable',controllers.signinTable)
+router.get('/listSigninTable',controllers.listSigninTable)
+router.post('/affirmSigninTable',controllers.affirmSigninTable)
+router.post('/delSigninInfo',controllers.delSigninInfo)
+
+router.post('/calcManHour', controllers.calcManHour)
+router.post('/getManHour',controllers.getManHour)

@@ -89,7 +89,7 @@ module.exports = async ctx => {
 
 			//将排班结果按班次&leader&member存入schedule中
 			//------------------------------------------------------------------
-			await mysql(name_table).where({ theClass: theclass }).update()	//待补充
+			//await mysql(name_table).where({ theClass: theclass }).update()	//待补充
 			//------------------------------------------------------------------
 			ctx.state.data = { query, classes_to_choose, a, arr, array, res }
 		}
