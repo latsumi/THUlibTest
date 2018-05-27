@@ -37,7 +37,7 @@
   <block wx:if="{{(!isClass)&&detail!=''}}">
   <label class="label"> 5.{{detail}}</label>
   <view class="log-list border-all">
-    <textarea name="answers" value="{{answers}}" style='height:150px;' placeholder="畅所欲言" maxlength="-1"/>
+    <textarea name="answer" value="{{answer}}" style='height:150px;' placeholder="畅所欲言" maxlength="-1"/>
   </view>
   </block>
 
@@ -47,7 +47,7 @@
   <view style='width:690rpx;margin:8px 0;'><text class="desc">{{detail}}</text>
 </view>
   <view class="log-list">
-    <checkbox-group  class="classes" name="classes">
+    <checkbox-group  class="answer" name="answer">
       <label wx:for="{{canIChoose}}" wx:key="">
        <checkbox style="margin-bottom:12px;margin-right:5px;" value="{{canIChoose[index]}}"/>{{canIChoose[index]}}
      </label>

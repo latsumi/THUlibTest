@@ -24,7 +24,7 @@
 <block wx:if="{{!isClass}}">
   <label class="label">4.问卷要收集的信息(只能填一个问题)</label>
 <view class="log-list border">
-<textarea name="detail" auto-height placeholder="收集微信信息的问卷勿填" maxlength="-1"/>
+<textarea name="detail" auto-height placeholder="填写要问的问题" maxlength="-1"/>
 </view>
 </block>
 

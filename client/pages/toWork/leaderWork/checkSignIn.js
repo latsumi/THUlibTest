@@ -9,20 +9,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    listData: [
-      {id:17,name:'曹思奇',library:0,workType:1,isLeader:1,manHour:2,isRelief:1},
-      { id: 18, name: '曹思奇', library: 0, workType: 3, isLeader: 1, manHour: 0, isRelief: 1 },
-      { id: 17, name: '萧霭静', library: 0, workType: 1, isLeader: 1, manHour: 2, isRelief: 0 },
-      { id: 18, name: '萧霭静', library: 0, workType: 0, isLeader: 1, manHour: 0, isRelief: 0 },
-      { id: 19, name: '荆潇', library: 1, workType: 1, isLeader: 0, manHour: 1, isRelief: 1 },
-      { id: 14, name: '荆潇', library: 1, workType: 3, isLeader: 0, manHour: 2, isRelief: 0 },
-      { id: 11, name: '荆潇', library: 1, workType: 0, isLeader: 0, manHour: 2, isRelief: 0},
-    ],
-    showData:[],
+    listData: [],
     library: 0,
     currentDay: '',
+    libraries: ['社科', '科技'],
     classes: ['早班', '午班', '晚一', '晚二',],
-    manHour: ['1.5h', '2h', '2.5h', '3h'],
     remarks: ['替班', '负责人'],
     descs: '↓下拉刷新签到信息↓',
     radioChoose: [
@@ -95,9 +86,10 @@ Page({
           if (res.confirm) {
             util.showBusy('少女祈祷中')
             http.POST({
-              url: "",  //待填
+              url: "affirmSigninTable",
               data: data,
               success: function (res) {
+                console.log(res.data.data)
                 wx.navigateBack({
                   delta: 1
                 })
@@ -126,7 +118,7 @@ Page({
           if (res.confirm) {
             util.showBusy('少女祈祷中')
             http.POST({
-              url: "",  //待填
+              url: "delSigninInfo",
               data: data,
               success: function (res) {
                 wx.navigateBack({
@@ -161,8 +153,8 @@ Page({
       chooseDay: this.data.day[day],
     })
     var that = this;
-    /*http.GET({
-      url: '',  //待填
+    http.GET({
+      url: 'listSigninTable',
       data: {},
       success: function (res) {
         that.setData({
@@ -170,7 +162,7 @@ Page({
         })
       },
       fail: function (res) { }, complete: function (res) { },
-    })*/
+    })
 
 
   },
@@ -196,7 +188,7 @@ Page({
     wx.showNavigationBarLoading() //在标题栏中显示加载
     var that = this;
     http.GET({
-      url: '',  //待填
+      url: 'listSigninTable',
       data: {},
       success: function (res) {
         that.setData({

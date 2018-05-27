@@ -43,7 +43,7 @@
 .form {
   width: 690rpx;
 }
-.classes{
+.answer{
   width: 520rpx;
   margin: 8px;
 }

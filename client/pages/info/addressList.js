@@ -54,6 +54,7 @@ Page({
         that.setData({
           listData: res.data.data
         })
+        console.log(res.data.data)
       },
       fail: function (res) {
         util.showNetworkFail()

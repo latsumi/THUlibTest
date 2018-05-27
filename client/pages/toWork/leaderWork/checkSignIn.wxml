@@ -9,7 +9,7 @@
   <view class="inputArea">
     <checkbox-group  class='checkSign' name="id">
       <label wx:for="{{listData}}" wx:key="" wx:if='{{library==listData[index].library||library>1}}'>
-        <checkbox style='margin-bottom:15px;' value="{{listData[index].id}}"/>{{listData[index].name}} {{classes[listData[index].workType]}} {{manHour[listData[index].manHour]}} {{listData[index].isRelief?remarks[0]:''}} {{listData[index].isLeader?remarks[1]:''}}
+        <checkbox style='margin-bottom:15px;' value="{{listData[index].id}}"/>{{listData[index].name}} {{libraries[listData[index].library]}} {{classes[listData[index].workType]}} {{listData[index].manHour}}h {{listData[index].isRelief?remarks[0]:''}} {{listData[index].isLeader?remarks[1]:''}}
       </label>
     </checkbox-group>
   </view>

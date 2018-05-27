@@ -70,7 +70,7 @@ Page({
             if (res.confirm) {
               util.showBusy('少女祈祷中')
               http.POST({
-                url: "",  //待填
+                url: "calcmanHour",
                 data: data,
                 success: function (res) {
                   wx.navigateBack({

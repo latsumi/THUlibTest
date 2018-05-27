@@ -1,6 +1,8 @@
 // pages/toWork/editQuestionnaire/questionnaireView.js
 var http = require('../../../utils/http')
 var util = require('../../../utils/util.js')
+const app = getApp()
+
 Page({
 
   /**
@@ -10,6 +12,7 @@ Page({
     listData: [],
     urlTo: '',
     urlFrom: '',
+    authority: '',
   },
 
   bindViewTap: function (event) {
@@ -40,7 +43,8 @@ Page({
     else
       urlTo = '../../me/questionnaireFill'
     that.setData({
-      urlTo: urlTo
+      urlTo: urlTo,
+      authority: app.globalData.authority,
     })
     http.GET({
       url: "listQues",

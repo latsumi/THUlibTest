@@ -20,6 +20,7 @@ Page({
     currentPeriod: 0,
     classes: ['早班', '午班', '晚一', '晚二', ],
     manHour:['1.5h','2h','2.5h','3h'],
+    manHourPost: [1.5, 2, 2.5, 3],
     period: ['晚上', '早上', '上午', '中午', '下午'],
     day: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
     remarks:['替班','负责人'],
@@ -71,7 +72,7 @@ Page({
           if (res.confirm) {
             util.showBusy('少女祈祷中')
             http.POST({
-              url: "",  //待填
+              url: "signinTable",
               data: data,
               success: function (res) {
                 wx.navigateBack({

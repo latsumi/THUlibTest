@@ -20,9 +20,9 @@ Page({
     library: '',
     menu:[
       { menuImage: "../../image/questionnaire.png", descs: "填写问卷" },
-      { menuImage: "../../image/workingHours.png", descs: "工时查看" },
-      { menuImage: "../../image/messageBox.png", descs: "留言箱" },
-      { menuImage: "../../image/contactUs.png", descs: "联系我们" },
+      { menuImage: "../../image/manHour.png", descs: "工时查看" },
+      { menuImage: "../../image/bindingNum.png", descs: "绑定学号" },
+      { menuImage: "../../image/messageBox.png", descs: "留言" },
       { menuImage: "../../image/beMember.png", descs: "成为队员" },
       { menuImage: "../../image/beLeader.png", descs: "成为负责人" },
       { menuImage: "../../image/beAdmin.png", descs: "成为管理员" },
@@ -66,6 +66,7 @@ Page({
               },
               complete() {//根据用户的openId去通讯录查询权限
                 app.globalData.userInfo = that.data.userInfo
+                app.globalData.authority = 1
                 console.log(app.globalData.userInfo)
                 var data = {}
                 data.openId = that.data.userInfo.openId
@@ -73,17 +74,19 @@ Page({
                   url: 'getStatus',
                   data: data,
                   success: function (res) {
-                    that.setData({
-                      authority: res.data.data[0].status,
-                      name: res.data.data[0].name,
-                      library: res.data.data[0].library,
-                    })
                     console.log('返回值为：', res.data.data)
-                    //下面的赋值语句待修改
-                    app.globalData.authority = that.data.authority=='队委'?4:1
-                    app.globalData.name = that.data.name
-                    app.globalData.library = that.data.library
-                    console.log(app.globalData)
+                    if(res.data.data.length != 0)
+                    {
+                      that.setData({
+                        authority: res.data.data[0].grade,
+                        name: res.data.data[0].name,
+                        library: res.data.data[0].library,
+                      })
+                      app.globalData.authority = that.data.authority
+                      app.globalData.name = that.data.name
+                      app.globalData.library = that.data.library
+                      console.log('全局变量的值为：', app.globalData)
+                    }
                   },
                   fail: function (res) {
                     util.showNetworkFail()
@@ -164,7 +167,9 @@ Page({
         }
         case 2:
         {
-          
+            wx.navigateTo({
+              url: 'bindStudentNum',
+            })
           break;
         }
         case 3:

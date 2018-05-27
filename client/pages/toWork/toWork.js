@@ -66,7 +66,7 @@ Page({
       default:
       {
         wx.showModal({
-          title: '此处施工中',
+          title: '施工中',
           content: '敬请期待',
           showCancel: false
         })

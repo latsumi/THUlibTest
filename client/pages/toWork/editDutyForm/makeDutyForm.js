@@ -87,8 +87,17 @@ Page({
     http.GET({
       url: "listQues",  //待填
       success: function (res) {
+        var data = res.data.data
+        for(var i=0;i<data.length;i++){
+          if(!data[i].isClass)
+          {
+            data.splice(i, 1)
+            i--
+          }
+        }
+        console.log(res.data.data)
         that.setData({
-          listData: res.data.data
+          listData: data
         })
       },
       fail: function (res) {

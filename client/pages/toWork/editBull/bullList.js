@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    listData:''
+    listData:'',
+    descs: '↓长按选择置顶公告↓',
+
   },
 
   /**
@@ -87,6 +89,34 @@ Page({
     var item = this.data.listData[index]
     wx.navigateTo({
       url: 'editBull?title=' + item.title + '&id=' + item.id + '&detail=' + item.detail,
+    })
+  },
+  bindNoticeTop: function (event) {
+    var index = event.target.dataset.index
+    var item = this.data.listData[index]
+    var id = item.id
+    wx.showModal({
+      title: '提示',
+      content: '确定置顶吗？',
+      success: function (res) {
+        if (res.confirm) {
+          util.showBusy('正在提交')
+          http.POST({
+            url: "topNoticeInfo",
+            data: { id: id },
+            success: function (res) {
+              wx.navigateBack({
+                delta: 1
+              })
+              util.showSuccess('已置顶')
+            },
+            fail: function (res) {
+              util.showFail('操作失败', '请稍后再试')
+            }, complete: function (res) { },
+          })
+        }
+      },
+      fail: function (res) { }, complete: function (res) { },
     })
   }
 })

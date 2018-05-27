@@ -36,10 +36,10 @@ Page({
 
     if (data.name === '' || data.studentNum === '' || data.library === '' || data.status === '' || (data.classes == false && data.isClass == 1)) {
       if (data.name === '')
-        util.showFailShort('名字不能为空！')
+        util.showFailShort('请填写姓名！')
       else {
         if (data.studentNum === '')
-          util.showFailShort('学号不能为空！')
+          util.showFailShort('请填写学号！')
         else {
           if (data.library === '')
             util.showFailShort('请选择库区！')
