@@ -4,9 +4,14 @@
 	"miniprogramRoot": "./client",
 	"qcloudRoot": "./server",
 	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
 		"newFeature": true
 	},
 	"appid": "wx55bf8ea43c380242",
 	"projectname": "THUlib_MiniPro",
+	"libVersion": "2.0.4",
 	"condition": {}
 }
